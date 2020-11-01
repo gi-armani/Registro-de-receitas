@@ -6,10 +6,12 @@ function App() {
       <h1>CRUD Application</h1>
       
       <div className='form'>
-        <label>Song name</label>
-        <input type='text' name='songName'></input>
-        <label>Lyrics analysis</label>
-        <input type='text' name='songName'></input>
+        <label>Nome da receita</label>
+        <input type='text' name='nomeReceita'></input>
+        <label>Ingredientes</label>
+        <input type='text' name='ingredientes'></input>
+        <label>Instruções</label>
+        <input type='text' name='instrucoes'></input>
 
         <button type='submit'>Submit</button>
       </div>
