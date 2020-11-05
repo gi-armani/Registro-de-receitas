@@ -3,33 +3,22 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app       = express();
 const pg        = require('pg');
-const sql;
 
 const config = {
     user: 'postgres',
     database: 'receitas',
-    password: 'felima09',
+    password: 'a1b2c3d4',
     port: 5432                  //Default port, change it if needed
 };
 
 // pool takes the object above -config- as parameter
 const pool = new pg.Pool(config);
-app.get('/', (req, res, next) => {
-   sql = pool.connect(function (err, client, done) {
+   const sql = pool.connect(function (err, client, done) {
        if (err) {
            console.log("Can not connect to the DB" + err);
        }
-       /*client.query('SELECT * FROM receitas', function (err, result) {
-            done();
-            if (err) {
-                console.log(err);
-                res.status(400).send(err);
-            }
-            res.status(200).send(result.rows);
-       })
-       console.log('foi?');*/
+       
    })
-});
 
 app.use(cors());
 app.use(express.json());

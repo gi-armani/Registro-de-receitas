@@ -17,6 +17,7 @@ function App() {
   }, []);
   
   const submitReview = () => {
+    console.log('deu');
     Axios.post('http://localhost:4000/api/insert', {
       nomeReceita: nomeReceita, 
       ingredientes: ingredientes, 
@@ -44,7 +45,7 @@ function App() {
           setInstrucoes(e.target.value)
         )}></input>
 
-        <button type='submit' onClick={submitReview}>Submit</button>
+        <button  onClick={submitReview()}>Submit</button>
       
         {listaReceitas.map((val) => {
           return <h1>Nome da receita: {val.nomeReceita}</h1>
