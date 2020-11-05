@@ -35,6 +35,15 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.get("/api/get", (req, res) => {
+    const query = "SELECT * FROM receitas";
+    sql.query(query, (err, result) => {
+        //console.log(result);
+        res.send(result);
+    })
+
+})
+
 app.post("/api/insert", (req, res) => {
 
     const nomeReceita = req.body.nomeReceita

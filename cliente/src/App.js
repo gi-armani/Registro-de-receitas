@@ -7,7 +7,15 @@ function App() {
   const [nomeReceita, setNomeReceita] = useState('');
   const [ingredientes, setIngredientes] = useState('');
   const [instrucoes, setInstrucoes] = useState('');
+  const [listaReceitas, setListaReceitas] = useState([]);
 
+  useEffect(() => {
+    Axios.get('http://localhost:4000/api/get').then((response) => {
+      setListaReceitas(response.data);
+      //console.log(response.data);
+    });
+  }, []);
+  
   const submitReview = () => {
     Axios.post('http://localhost:4000/api/insert', {
       nomeReceita: nomeReceita, 
@@ -37,6 +45,10 @@ function App() {
         )}></input>
 
         <button type='submit' onClick={submitReview}>Submit</button>
+      
+        {listaReceitas.map((val) => {
+          return <h1>Nome da receita: {val.nomeReceita}</h1>
+        })}
       </div>
       
     </div>
