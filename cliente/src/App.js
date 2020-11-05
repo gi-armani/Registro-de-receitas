@@ -9,7 +9,13 @@ function App() {
   const [instrucoes, setInstrucoes] = useState('');
 
   const submitReview = () => {
-    Axios.post('http://localhost:4000/api/insert', {nomeReceita: nomeReceita, ingredientes: ingredientes, instrucoes: instrucoes});
+    Axios.post('http://localhost:4000/api/insert', {
+      nomeReceita: nomeReceita, 
+      ingredientes: ingredientes, 
+      instrucoes: instrucoes
+    }).then(() => {
+      alert('sucess')
+    });
   };
 
   return (
